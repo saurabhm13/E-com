@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.MainActivity">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/toolbar_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtMyStory"
+                style="@style/PrimaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="@string/my_story"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/imgFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_favorite_border"
+                app:layout_constraintEnd_toStartOf="@id/imgCart"
+                app:layout_constraintTop_toTopOf="@id/txtMyStory"
+                app:layout_constraintBottom_toBottomOf="@id/txtMyStory"
+                android:contentDescription="@string/favorite"
+                app:tint="@color/black" />
+
+            <ImageView
+                android:id="@+id/imgCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shopping_cart"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtMyStory"
+                app:layout_constraintBottom_toBottomOf="@id/txtMyStory"
+                android:contentDescription="@string/cart"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/favoriteCount"
+                style="@style/TertiaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:paddingStart="3dp"
+                android:paddingEnd="3dp"
+                android:visibility="gone"
+                android:layout_marginEnd="-4dp"
+                android:layout_marginTop="-4dp"
+                android:background="@drawable/item_count_bg"
+                app:layout_constraintEnd_toEndOf="@+id/imgFavorite"
+                app:layout_constraintTop_toTopOf="@id/imgFavorite"/>
+
+            <TextView
+                android:id="@+id/cartCount"
+                style="@style/TertiaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:paddingStart="3dp"
+                android:paddingEnd="3dp"
+                android:layout_marginEnd="-4dp"
+                android:layout_marginTop="-4dp"
+                android:background="@drawable/item_count_bg"
+                app:layout_constraintEnd_toEndOf="@+id/imgCart"
+                app:layout_constraintTop_toTopOf="@id/imgCart"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgFeatured"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/grocery_offer"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/CornerImage"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_category"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgFeatured"
+                tools:listitem="@layout/category_items" />
+
+            <TextView
+                android:id="@+id/txtFood"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/food"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_category"/>
+
+            <ImageView
+                android:id="@+id/food_more"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                style="@style/Icon"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/food"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintBottom_toBottomOf="@+id/txtFood"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtFood" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFood"
+                tools:listitem="@layout/product_item" />
+
+            <View
+                android:id="@+id/foodDivideView"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_food"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/txtBeverages"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/beverages"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/foodDivideView"/>
+
+            <ImageView
+                android:id="@+id/beverages_more"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                style="@style/Icon"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/food"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintBottom_toBottomOf="@+id/txtBeverages"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtBeverages" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_beverages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtBeverages"
+                tools:listitem="@layout/product_item" />
+
+            <View
+                android:id="@+id/beveragesDivideView"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_beverages"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtHygieneEssentials"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/hygiene_essentials"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/beveragesDivideView"/>
+
+            <ImageView
+                android:id="@+id/hygieneEssentials_more"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                style="@style/Icon"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/food"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintBottom_toBottomOf="@+id/txtHygieneEssentials"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtHygieneEssentials" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_hygieneEssentials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtHygieneEssentials"
+                tools:listitem="@layout/product_item" />
+
+            <View
+                android:id="@+id/hygieneDivideView"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_hygieneEssentials"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtPoojaDailyNeeds"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/pooja_daily_needs"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hygieneDivideView"/>
+
+            <ImageView
+                android:id="@+id/poojaDailyNeeds_more"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                style="@style/Icon"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/food"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintBottom_toBottomOf="@+id/txtPoojaDailyNeeds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtPoojaDailyNeeds" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_poojaDailyNeeds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPoojaDailyNeeds"
+                tools:listitem="@layout/product_item" />
+
+            <View
+                android:id="@+id/poojaNeedsDivideView"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/gray"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_poojaDailyNeeds"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtElectronicItems"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/electronic_items"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/poojaNeedsDivideView"/>
+
+            <ImageView
+                android:id="@+id/electronicItems_more"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                style="@style/Icon"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/food"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintBottom_toBottomOf="@+id/txtElectronicItems"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtElectronicItems" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_electronicItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtElectronicItems"
+                tools:listitem="@layout/product_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

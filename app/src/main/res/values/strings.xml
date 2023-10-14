@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ShoppingApp</string>
+    <string name="my_story">My Story</string>
+    <string name="cart">Cart</string>
+    <string name="favorite">Favorite</string>
+    <string name="category_image">Category</string>
+    <string name="food">Food</string>
+    <string name="image">Image</string>
+    <string name="add">Add</string>
+    <string name="beverages">Beverages</string>
+    <string name="hygiene_essentials">Hygiene Essentials</string>
+    <string name="pooja_daily_needs">Pooja Daily Needs</string>
+    <string name="electronic_items">Electronic Items</string>
+    <string name="minus">Minus</string>
+    <string name="back">Back</string>
+    <string name="sub_total">Sub total</string>
+    <string name="discount_10">Discount (10%)</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+</resources>
